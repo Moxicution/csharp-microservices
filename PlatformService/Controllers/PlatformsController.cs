@@ -21,8 +21,6 @@ namespace PlatformService.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
         {
-            Console.WriteLine("--> Getting platforms...");
-
             var platformItems = _repo.GetAllPlatforms();
             return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItems));
         }
@@ -30,8 +28,6 @@ namespace PlatformService.Controllers
         [HttpGet("{id}", Name = "GetPlatformById")]
         public ActionResult<PlatformReadDto> GetPlatformById(int id)
         {
-            Console.WriteLine("--> Getting platform...");
-
             var platformItem = _repo.GetPlatformById(id);
             if (platformItem == null)
                 return NotFound();
@@ -42,8 +38,6 @@ namespace PlatformService.Controllers
         [HttpPost]
         public ActionResult<PlatformReadDto> CreatePlatform(PlatformCreateDto platform)
         {
-            Console.WriteLine("--> Creating platform...");
-            
             var platformModel = _mapper.Map<Platform>(platform);
             _repo.CreatePlatform(platformModel);
             _repo.SaveChanges();
