@@ -12,14 +12,14 @@ builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
 
 var app = builder.Build();
 
+PrepDb.PrepPopulation(app);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-PrepDb.PrepPopulation(app);
 
 app.UseHttpsRedirection();
 

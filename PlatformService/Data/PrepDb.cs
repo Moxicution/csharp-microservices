@@ -4,18 +4,16 @@ namespace PlatformService.Data
 {
     public static class PrepDb
     {
-        public static void PrepPopulation(IApplicationBuilder app)
+        public static void PrepPopulation(WebApplication app)
         {
-            using(var serviceScope = app.ApplicationServices.CreateScope())
-            {
+            using(var serviceScope = app.Services.CreateScope())
                 SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>());
-            }
         }
 
         private static void SeedData(AppDbContext context)
         {
             if (!context.Platforms.Any())
-            {
+            { 
                 Console.WriteLine("--> Seeding data...");
 
                 context.Platforms.AddRange(
