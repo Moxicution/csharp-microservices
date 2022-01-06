@@ -31,7 +31,7 @@ namespace PlatformService.Controllers
             var platformItem = _repo.GetPlatformById(id);
             if (platformItem == null)
                 return NotFound();
-
+                
             return Ok(_mapper.Map<PlatformReadDto>(platformItem));
         }
 
