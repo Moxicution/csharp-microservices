@@ -12,6 +12,7 @@ namespace PlatformService.Controllers
     {
         private readonly IPlatformRepository _repo;
         private readonly IMapper _mapper;
+        
         public PlatformsController(IPlatformRepository repo, IMapper mapper)
         {
             _repo = repo;
